@@ -1,0 +1,189 @@
+#overlay {
+    position: absolute;
+    left:0px;
+    right:0px;
+    top:20%;
+    margin:auto;
+    background-color: #ffffff;
+    width: 50%;
+    max-width:500px;
+    z-index: 100;
+}
+#fade {
+    position: fixed;
+    left: 0%;
+    top: 0%;
+    background-color: black;
+    -moz-opacity: 0.7;
+    opacity: .70;
+    filter: alpha(opacity=70);
+    width: 100%;
+    height: 100%;
+    z-index: 90;
+}
+
+#custom-modal.ng-enter {
+  transition: opacity .5s ease-out;
+  opacity: 0;
+}
+#custom-modal.ng-enter.ng-enter-active {
+  opacity: 1;
+}
+#custom-modal.ng-leave {
+  transition: opacity .5s ease-out;
+  opacity: 1;
+}
+#custom-modal.ng-leave.ng-leave-active {
+  opacity: 0;
+}
+
+#overlay .header{
+  width:100%;
+  box-sizing:border-box;
+  height:60px;
+  padding:10px 20px;
+  background-color: #E91F64;
+  position:relative;
+}
+#overlay .header .user{
+  float:left;
+  position:relative;
+  cursor:pointer;
+}
+#overlay .header .user img.arrow{
+  width: 10px;
+  padding: 2px;
+  position: relative;
+  float: left;
+  margin-top: 5px;
+}
+#overlay .header .logo{
+  float:left;
+}
+#overlay .header img.logo{
+  border-radius:50%;
+  cursor:pointer;
+  height:80%;
+  top:10%;
+  position:relative;
+}
+#overlay .header .description{
+  float:left;
+  color:white;
+  font-weight:bold;
+  height:100%;
+  background-color: rgba(0,0,0,0);
+  border: 0px;
+  font-size: 1em;
+  margin: 0px 20px;
+}
+#overlay .header .close{
+  height: 40%;
+  top: 30%;
+  position: relative;
+  float:right;
+  cursor: pointer;
+}
+#overlay .body{
+  width:100%;
+  box-sizing:border-box;
+  padding: 0px 20px;
+  position:relative;
+}
+#overlay .body .input{
+  width:100%;
+  height:40px;
+  padding: 20px 0px;
+  margin:10px auto;
+  font-size:1em;
+  border:0px;
+}
+#overlay .body .poster{
+  width:100%;
+  height:auto;
+}
+#overlay .body button.post{
+  float:right;
+  background-color:#3b5998;
+  color:white;
+  padding:5px;
+  margin:10px 0px;
+  border:0px;
+}
+#overlay .body .input span.tag{
+  background-color:yellow;
+}
+
+
+.fb-dropdown{
+  position:absolute;
+  top:40px;
+  left:20px;
+  width:70%;
+  background-color:white;
+  list-style-type: none;
+  padding:0px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.45);
+}
+.dropdown li{
+  position:relative;
+  display:block;
+  width:100%;
+  padding:5px;
+  box-sizing:border-box;
+  height:50px;
+  cursor:pointer;
+}
+.dropdown li.divider{
+  cursor:auto;
+  height:20px;
+  padding: 0px 20px;
+  background-color: #e0e0e0;
+  color: #151414;
+}
+.dropdown li img{
+  height:100%;
+  width:40px;
+  object-fit:cover;
+  float:left;
+  padding:0px 10px;
+}
+.dropdown li .name{
+  font-weight:bold;
+  width:70%;
+  float:left;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.dropdown li .description{
+  width:70%;
+  float:left;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.dropdown li:hover{
+  background-color:#3B5998;
+}
+.dropdown li:hover .name, .dropdown li:hover .description{
+  color:white;
+}
+
+.fb-user{
+  position:relative;
+}
+.fb-user-dropdown{ 
+  z-index:500;
+  position:absolute;
+  top:30px;
+  left:20px;
+  width:70%;
+  background-color:white;
+  list-style-type: none;
+  padding:0px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.45);
+}
+.fb-user-dropdown li .name{
+  line-height:40px;
+}

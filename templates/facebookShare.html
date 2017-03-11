@@ -1,0 +1,44 @@
+<div id="custom-modal">
+  <div id="overlay">
+        <div class="header">
+            <div class='user' ng-click="showAccounts()" >
+                <img class='logo' src='img/socialmedia/facebookButton.png' ng-src="{{ selectedAccount.picture.data.url | trustUrl}}"/>
+            
+                <img class='arrow' src='img/downarrow.png' />
+            </div>
+
+            <input class='description' value="Share To Facebook" readonly/>
+            <img class='close' ng-click="close()" src='img/whiteExit.png'/>
+
+            <ul class='fb-user-dropdown dropdown' ng-show="showUserDropdown">
+                <li ng-click="selectAccount(user)">
+                    <img ng-src="{{ user.picture.data.url | trustUrl}}" />
+                    <div class='name'>{{user.name}} (you)</div>
+                </li>
+                <li class='divider'>Managed Pages</li>
+                <li ng-repeat="data in managedPages" ng-click="selectAccount(data)">
+                    <img ng-src="{{ data.picture.data.url | trustUrl}}" />
+                    <div class='name'>{{data.name}}</div>
+                </li>
+            </ul>
+
+        </div>
+        <div class='body'>
+            <input class='input' ng-model="postText" ng-keypress="handleKeypress($event)" placeholder="Say something about this video..."></input>
+            
+            <ul class='fb-dropdown dropdown' ng-show="showDropdown()">
+                <li ng-repeat="data in autocompleteList" ng-click="selectTag(data)">
+                    <img ng-src="{{ data.picture | trustUrl}}" />
+                    <div class='name'>{{data.name}}</div>
+                    <div class='description'>{{data.fan_count}} like this</div>
+                </li>
+            </ul>
+
+            <img class='poster' ng-src="{{ posterUrl() | trustUrl}}" ></img>
+
+            <button class='post' ng-click="post()">Post to Facebook</button>
+
+        </div>
+  </div>
+  <div id="fade"></div>
+</div>

@@ -1,0 +1,47 @@
+<div ng-controller="AceResultsController as ctrl"> 
+    <h1>{{data.name}}</h1>
+
+    <ul class="nav">
+        <li ng-class="{ active: isSet(1) }" ng-click="setTab(1)">
+            <a href >Script</a>
+        </li>
+        <li ng-class="{ active: isSet(2) }" ng-click="setTab(2)">
+            <a href >Assets</a>
+        </li>
+        <li ng-class="{ active: isSet(3) }" ng-click="setTab(3)">
+            <a href>Video</a>
+        </li>
+        <li ng-class="{ active: isSet(4) }" ng-click="setTab(4)">
+            <a href >Editor</a>
+        </li>
+    </ul>
+
+    <spacer></spacer>
+
+    <div class='text-field script' ng-show="isSet(1)">
+        <textarea type="text" ng-repeat="t in data.script">{{t.text}}</textarea>
+    </div>
+    
+
+    <div class='assets' ng-show="isSet(2)">
+        <div ng-repeat="v in data.assets" class='asset'>
+            <!-- <a target="blank" href="{{v.source | trustUrl}}">{{v.title}}</a><br/> -->
+            <iframe width='180' height='180' ng-src="{{v.embed | trustUrl}}" frameborder='0' allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <div class='video' ng-show="isSet(3)">
+        <div ng-hide="videoReady()" class='start-render' ng-click="startRender()">{{videoBtnText}}</div>
+
+        <video ng-show="videoReady()" poster="{{videoData.poster | trustUrl}}" controls="" ng-src="{{videoData.url | trustUrl}}"></video>
+
+        <share-button storyid={{searchId}} storyname={{data.name}}></share-button>
+
+    </div>
+
+    <div class='editor' ng-show="isSet(4)">
+
+    </div>
+
+
+</div>

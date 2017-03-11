@@ -1,0 +1,27 @@
+share-button{
+	display:block;
+	height:2.5em;
+}
+share-button button{
+	height:100%;
+	color: #ffffff;
+	font-size:1em;
+	padding:0px 30px;
+	background-color: #E91F64;
+	border-radius:1.5em;
+}
+share-button .buttons{
+	height:80%;
+	position:relative;
+	top:10%;
+	right:0%;
+}
+
+share-button img{
+	height:100%;
+	width:auto;
+	margin:0px 5px;
+	float:right;
+	display:block;
+	cursor:pointer;
+}
