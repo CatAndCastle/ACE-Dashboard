@@ -1,0 +1,29 @@
+<div class='header'>
+    <img class='logo' src='img/ace_logo.png' />
+    <img class='settings' src='img/settings.png' />
+</div>
+
+<div class='user'>
+    <img class='profile' src='img/socialmedia/facebookButton.png' ng-src="{{ user.picture.data.url | trustUrl}}"/>
+    <div class='name'>{{user.name}}</div>
+    <button class='logout' ng-click='logout()'>logout</button>
+</div>
+
+
+<div class='nav-item'>
+    <a href='/'>
+        <img src='img/nav/createNew.png'/>
+        <div class='cta'>Create New</div>
+        <div class='underline'></div>
+    </a>
+</div>
+<div class='nav-item'>
+    <img src='img/nav/videoManager.png'/>
+    <div class='cta'>Video Manager</div>
+    <div class='underline'></div>
+</div>
+<div class='nav-item'>
+    <img src='img/nav/analytics.png'/>
+    <div class='cta'>Analytics</div>
+    <div class='underline'></div>
+</div>

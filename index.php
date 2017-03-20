@@ -19,6 +19,8 @@
     <base href="/">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="img/favicon.ico" type="image/x-icon">
 
 	<script type="text/javascript" src="lib/angular.1.5.8.min.js"></script>
 	<script type="text/javascript" src="lib/angular-animate.min.js"></script>
@@ -32,12 +34,20 @@
 	<script type="text/javascript" src="controllers/AceResultsController.js"></script>
 	<script type="text/javascript" src="controllers/facebookShareController.js"></script>
 	<script type="text/javascript" src="controllers/shareButtonsController.js"></script>
-
+	<script type="text/javascript" src="controllers/SideBarController.js"></script>
+	
 	<script type="text/javascript" src="js/components.js"></script>
+	
+	<!-- Player JS -->
+	<script type="text/javascript" src="js/editor/bodymovin.js"></script>	
+	<script type="text/javascript" src="js/editor/ZSPlayer.js"></script>	
 
 	<link href='css/main.css' rel='stylesheet' type='text/css'>
 	<link href='css/shareButtons.css' rel='stylesheet' type='text/css'>
 	<link href='css/facebookShare.css' rel='stylesheet' type='text/css'>
+	<link href='css/sideBar.css' rel='stylesheet' type='text/css'>
+	<link href='css/input.css' rel='stylesheet' type='text/css'>
+	<link href='css/dashboard.css' rel='stylesheet' type='text/css'>
 
 	<link href='font/Roboto/Roboto.css' rel='stylesheet' type='text/css'>
 	<link href='font/AvenirNext/AvenirNext.css' rel='stylesheet' type='text/css'>
@@ -67,10 +77,12 @@
 
 	<div ng-app="ace-dashboard">
 
+		<side-bar></side-bar>
 		<dashboard>
-			<ng-view autoscroll="true" style="width:80%;margin:auto;position:relative;display:block;"></ng-view>
+			<ng-view autoscroll="true" class='full-screen ace-results'></ng-view>
 		</dashboard>
 	</div>
+
 
 
 </body>

@@ -4,7 +4,8 @@ ACE.controller('AceResultsController', function($scope, $http, $timeout, $routeP
 	var ctrl = this;
 
 	$scope.searchId = $routeParams.searchId;
-	console.log("search " + $scope.searchId);
+
+	$scope.aceReady = false;
 	$scope.searchStatusText = "SEARCHING";
 	$scope.searchStatus = 0;
 	$scope.data = {'name':'SEARCHING', storyId:$scope.searchId};
@@ -12,17 +13,25 @@ ACE.controller('AceResultsController', function($scope, $http, $timeout, $routeP
 	$scope.videoData = {'status':0};
 	$scope.videoBtnText = "Render Video";
 
+	$scope.bodymovin = null;
+
 	// TABLOIDSS HEHEHEHEHAHHA
 	$scope.tab = 1;
     
     $scope.setTab = function(newTab){
       $scope.tab = newTab;
+      if(newTab == 4){
+      	initPlayer();
+      }
     };
     
     $scope.isSet = function(tabNum){
       return $scope.tab === tabNum;
     };
 
+    $scope.ready = function(){
+    	return scope.aceReady();
+    }
 
     // Check for ACE results
     function pollResults(){
@@ -30,7 +39,7 @@ ACE.controller('AceResultsController', function($scope, $http, $timeout, $routeP
 
         $http.get(API_BASE+"ace/searchResults?searchId="+$scope.searchId)
             .then(function(response){ 
-            	console.log(response);
+            	// console.log(response);
 
             	if(response.status == 200){
 	                response = response['data'];
@@ -38,6 +47,7 @@ ACE.controller('AceResultsController', function($scope, $http, $timeout, $routeP
 	                
 	                if($scope.searchStatus == 1){
 	                	$scope.searchStatusText = "READY: ";
+	                	$scope.aceReady = true;
 	                	$scope.data = response.data;
 
 	                	$("textarea").height( $("textarea")[0].scrollHeight );
@@ -103,6 +113,30 @@ ACE.controller('AceResultsController', function($scope, $http, $timeout, $routeP
 				    },5000);
             	}
             });
+    }
+
+
+    // JS PLayer
+    function initPlayer(){
+    	if(!$scope.bodymovin){
+    		CONFIG = {
+    			'storyId': $scope.searchId,
+    			'platform': 'phantom',
+    			'renderer': 'svg'
+    		}
+    		$scope.bodymovin = new VideoConstructor(CONFIG);
+    		advance($scope.bodymovin);
+    	}
+
+    }
+
+    function advance(constructor){
+        var keepgoing = constructor.goToNextFrame();
+        if(keepgoing){
+            setTimeout(function(){
+                advance(constructor);
+            },50);
+        }
     }
 
 });

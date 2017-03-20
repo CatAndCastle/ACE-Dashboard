@@ -1,0 +1,36 @@
+ul.manager-tabs{
+	display:block;
+	position:relative;
+	margin: 1em 0em;
+	padding:0px;
+}
+ul.manager-tabs li{
+	position:relative;
+	display: inline-block;
+	padding:1em 2em;
+	margin-right:2em;
+	border-radius:10px;
+	cursor:pointer;
+	width:50px;
+}
+.manager-tabs img{
+	width:35px;
+	height:35px;
+	object-fit: contain;
+	margin:auto;
+	display:block;
+	position:relative;
+}
+.manager-tabs li:hover{
+	color:black;
+	background-color:#d6d6d6;
+}
+ul.manager-tabs li.active{
+	background-color:#d6d6d6;
+}
+
+ul.manager-tabs li .tab-name{
+	width:100%;
+	text-align:center;
+	margin:10px auto;
+}

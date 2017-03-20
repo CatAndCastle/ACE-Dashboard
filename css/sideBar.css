@@ -1,0 +1,87 @@
+side-bar{
+	display:block;
+	position:absolute;
+	width:300px;
+	top:0px;
+	background-color:white;
+	height:100%;
+	text-align:center;
+}
+
+side-bar .header{
+	position:relative;
+	width:100%;
+	height:35px;
+	top:10px;
+}
+side-bar .header img {
+    height: 80%;
+    width: auto;
+    position: relative;
+    margin:0px 20px;
+    top: 10%;
+    cursor:pointer;
+}
+side-bar .header img.logo{
+	float:left;
+}
+side-bar .header img.settings{
+	float:right;
+}
+
+side-bar .user .profile{
+	width: 40%;
+    height: auto;
+    border-radius: 50%;
+    margin: auto;
+    position: relative;
+    display: block;
+}
+side-bar .user .name{
+	font-size:2em;
+	color:#565656;
+	margin:20px auto 0px;
+	font-weight:300;
+}
+side-bar .user .logout{
+	border:0px;
+	background-color: rgba(0,0,0,0);
+	font-size:1em;
+	font-weight:light;
+	color:grey;
+	cursor:pointer;
+	font-weight: 100;
+}
+
+side-bar .nav-item{
+	width:50%;
+	position:relative;
+	margin: 50px auto;
+	cursor: pointer;
+}
+side-bar .nav-item .underline{
+	width:60%;
+	height:3px;
+	background-color:#e8e2e2;
+	position:absolute;
+	bottom:-10px;
+	left:0px; right:0px;
+	margin:auto;
+	display:none;
+}
+side-bar .nav-item .cta{
+	width:100%;
+	text-align:center;
+	margin:10px auto;
+}
+side-bar .nav-item:hover .underline{
+	display:block;
+}
+
+side-bar .nav-item img{
+	width:30px;
+	height:auto;
+	margin:auto;
+	display:block;
+	position:relative;
+}

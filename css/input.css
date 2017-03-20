@@ -1,0 +1,48 @@
+.input-container{
+	width: 100%;
+	position:relative;
+	max-width:800px;
+	margin:50px 0px;
+}
+.input-container input{
+	width:100%;
+	padding-right:50px;
+}
+.input-container .search{
+	position: absolute;
+    top: 0px;
+    right: 1em;
+    height: 80%;
+    width: auto;
+    bottom: 0px;
+    margin: auto;
+    cursor:pointer;
+}
+
+.suggestions{
+	width:100%;
+	text-align:center;
+	position:relative;
+}
+.suggestions div{
+	position:relative;
+	display:inline-block;
+	text-align:left;
+	width:35%;
+	min-width:250px;
+}
+.suggestions div h2{
+	font-weight:300;
+}
+.suggestions ul{
+    padding: 0;
+    list-style-type: none;
+    text-align:left;
+}
+.suggestions ul li{
+	padding: 10px 0px;
+	cursor: pointer;
+	color:grey;
+}
+.suggestions ul li:hover{
+	color:black;
