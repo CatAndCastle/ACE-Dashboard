@@ -9,7 +9,11 @@
     <div>
         <h2>Recent Keywords</h2>
         <ul>
-            <li ng-repeat="q in queries.recent" ng-click="search(q.query)">{{q.query}}</li>
+            <li ng-repeat="q in queries.recent">
+                <a href="/search/{{q.searchId}}">
+                    {{q.query}}
+                </a>
+            </li>
         </ul>
     </div>
 
