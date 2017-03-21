@@ -6,9 +6,9 @@ ACE.controller('AceResultsController', function($scope, $http, $timeout, $routeP
 	$scope.searchId = $routeParams.searchId;
 
 	$scope.aceReady = false;
-	$scope.searchStatusText = "SEARCHING";
 	$scope.searchStatus = 0;
-	$scope.data = {'name':'SEARCHING', storyId:$scope.searchId};
+	$scope.data = {'name':'', storyId:$scope.searchId};
+	$scope.edited = false;
 	
 	$scope.videoData = {'status':0};
 	$scope.videoBtnText = "Render Video";
@@ -33,6 +33,42 @@ ACE.controller('AceResultsController', function($scope, $http, $timeout, $routeP
     	return scope.aceReady();
     }
 
+    $scope.$watch('data.script', function() {
+    	console.log($scope.data);
+    });
+
+    $scope.print = function(){
+    	console.log($scope.data);
+    }
+
+    // edit script
+    $scope.didEdit = function(){
+    	$scope.edited = true;
+    }
+
+    // save script edits
+    $scope.saveEdits = function(){
+    	$scope.edited = false;
+
+    	var postdata = $.param({ data: $scope.data, searchId: $scope.searchId });
+		var config = {
+            headers : {
+                'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+            }
+        }
+
+    	$http.post(API_BASE+"ace/updateStory", postdata, config)
+	    	.success(function (data, status, headers, config) {
+	        })
+	        .error(function (data, status, header, config) {
+	            $scope.ResponseDetails = "Data: " + data +
+	                "<hr />status: " + status +
+	                "<hr />headers: " + header +
+	                "<hr />config: " + config;
+	            $window.alert('We are experiencing errors. Please try again later.');
+	        });
+    }
+
     // Check for ACE results
     function pollResults(){
         // alert("search " + $scope.searchText);
@@ -46,9 +82,10 @@ ACE.controller('AceResultsController', function($scope, $http, $timeout, $routeP
 	                $scope.searchStatus = response.status;
 	                
 	                if($scope.searchStatus == 1){
-	                	$scope.searchStatusText = "READY: ";
 	                	$scope.aceReady = true;
+
 	                	$scope.data = response.data;
+	                	$scope.originalData = response.data;
 
 	                	$("textarea").height( $("textarea")[0].scrollHeight );
 	                }

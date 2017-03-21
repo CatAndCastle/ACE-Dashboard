@@ -27,11 +27,15 @@ button:focus {outline:0 !important;}
 	-ms-transition: all linear 100ms;
 	-o-transition: all linear 100ms;
 }
+
 .full-screen{
 	position:relative;
 	display:block;
 	width: 100%;
     min-height: 100%;
+}
+.clickable{
+	cursor:pointer;
 }
 
 loader{

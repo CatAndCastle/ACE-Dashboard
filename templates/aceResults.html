@@ -26,14 +26,20 @@
 
         <spacer></spacer>
 
-        <div class='text-field script' ng-show="isSet(1)">
-            <textarea type="text" ng-repeat="t in data.script">{{t.text}}</textarea>
+        <div class='script' ng-show="isSet(1)">
+            <div class='text-field script'>
+                <textarea type="text" ng-repeat="t in data.script" ng-model='t.text' ng-keyup='didEdit()'>{{t.text}}</textarea>
+            </div>
+            <div ng-click='saveEdits()' class='clickable fade ng-hide-animate save' ng-show='edited'>
+                <span>Save</span>
+                <img ng-src='img/checkmark.png' /> 
+            </div>
+
         </div>
         
 
         <div class='assets' ng-show="isSet(2)">
             <div ng-repeat="v in data.assets" class='asset'>
-                <!-- <a target="blank" href="{{v.source | trustUrl}}">{{v.title}}</a><br/> -->
                 <iframe width='180' height='180' ng-src="{{v.embed | trustUrl}}" frameborder='0' allowfullscreen></iframe>
             </div>
         </div>
