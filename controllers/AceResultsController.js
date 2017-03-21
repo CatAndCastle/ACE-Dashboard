@@ -157,12 +157,16 @@ ACE.controller('AceResultsController', function($scope, $http, $timeout, $routeP
     function initPlayer(){
     	if(!$scope.bodymovin){
     		CONFIG = {
+    			'api_url' : 'http://zeroslant.com/api/v0.2/',
     			'storyId': $scope.searchId,
-    			'platform': 'phantom',
-    			'renderer': 'svg'
+    			'platform': 'browser',
+    			'renderer': 'svg',
+    			'language':'en'
     		}
     		$scope.bodymovin = new VideoConstructor(CONFIG);
     		advance($scope.bodymovin);
+    	}else{
+    		$scope.bodymovin
     	}
 
     }
