@@ -32,6 +32,14 @@ function videoController($scope, $window, $rootScope, $http, $timeout){
 
 	$scope.toggleView = function(tab){
 		$scope.tab = tab;
+
+		if(tab == 'mp4' && !$scope.rendering && $scope.videoData.status!=2){
+			if ( window.confirm("start video render?") ) {
+	            $scope.renderMp4();
+	        }else{
+	        	$scope.tab = 'preview';
+	        }
+		}
 	}
 
 	// JS PLayer

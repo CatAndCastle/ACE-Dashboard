@@ -73,23 +73,33 @@ ace-video button-with-check{
 ace-video .toggle{
 	position: relative;
 	display:inline-block;
-    background-color: #d6d6d6;
     font-size: 1em;
-    border-radius: 4em;
     border: 0px;
-    margin: 1em 0em;
     font-weight: 300;
-    padding:1em;
+    
 }
-
+ace-video .toggle span.tab{
+	display:inline-block;
+	margin: 1em 0em;
+	padding:1em;
+	background-color: #d6d6d6;
+}
+ace-video .toggle span.tab:hover, ace-video .toggle span.tab.selected{
+	background-color:#565656;
+	color:white;
+}
 ace-video .toggle span:first-of-type{
-	padding: 0em 0.5em 0em 1em;
+	padding: 1em 0.5em 1em 1em;
 	border-right: 2px solid #565656;
+	border-top-left-radius: 4em;
+	border-bottom-left-radius: 4em;
 }
 ace-video .toggle span:last-of-type{
-	color:white;
-	padding: 0em 1em 0em 0.5em;
+	margin-left: -5px;
+	padding: 1em 1em 1em 0.5em;
+	border-top-right-radius: 4em;
+	border-bottom-right-radius: 4em;
 }
 ace-video .toggle span:last-of-type.rendered{
-	color:inherit;
+	/*color:inherit;*/
 }

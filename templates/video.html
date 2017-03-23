@@ -8,6 +8,7 @@
         </div>
 
         <div ng-show="isSet('mp4')">
+            <loader ng-hide="videoReady()" class='fade ng-hide-animate'></loader>
             <video ng-show="videoReady()" poster="{{videoData.poster | trustUrl}}" controls="" ng-src="{{videoData.url | trustUrl}}"></video>
             
         </div>
@@ -18,8 +19,8 @@
     <button-with-check ng-click="renderMp4()">Render</button-with-check>
 
     <div class='toggle'>
-        <span class='clickable tab' ng-click="toggleView('preview')">Preview</span>
-        <span class='tab clickable' ng-class="{ rendered: videoReady() }" ng-click="toggleView('mp4')">Mp4</span>
+        <span class='clickable tab' ng-class="{ selected: isSet('preview') }" ng-click="toggleView('preview')">Preview</span>
+        <span class='tab clickable' ng-class="{ selected: isSet('mp4'), rendered: videoReady() }" ng-click="toggleView('mp4')">Mp4</span>
     </div>
 </div>
 
