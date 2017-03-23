@@ -45,6 +45,9 @@ ACE.directive('shareButton', function(){
 				case 'email':
 					console.log("share " + $scope.type);
 					break;
+				case 'download':
+					console.log("share " + $scope.type);
+					break;
 				default:
 					console.log("share " + $scope.type);
 					break;
@@ -54,7 +57,7 @@ ACE.directive('shareButton', function(){
 	  	};
 	}],
 
-	template = '<img ng-class="{clickable: active, active: active, zoomHover: active }" src="img/socialmedia/{{type}}Icon.png" ng-click="share()"/>';
+	template = '<img ng-class="{clickable: active, active: active, zoomHover: active }" src="img/share/{{type}}Icon.png" ng-click="share()"/>';
 
 	return {
 		restrict: "EA",
