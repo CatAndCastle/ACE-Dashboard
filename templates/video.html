@@ -20,9 +20,15 @@
 
     <div class='toggle'>
         <span class='clickable tab' ng-class="{ selected: isSet('preview') }" ng-click="toggleView('preview')">Preview</span>
-        <span class='tab clickable' ng-class="{ selected: isSet('mp4'), rendered: videoReady() }" ng-click="toggleView('mp4')">Mp4</span>
+        <span class='tab clickable' ng-class="{ selected: isSet('mp4'), rendered: videoReady() }" ng-click="toggleView('mp4')">MP4</span>
+    </div>
+
+    <div class='actions'>
+        <img class="clickable zoom-hover" src="img/video/analyticsIcon.png" ng-click="goAnalytics()"/>
+        <img class="clickable zoom-hover" src="img/video/downloadIcon.png" ng-click="download()"/>
+        <share-button type="email" storyid="{{story.storyId}}" storyname="{{story.name}}" active="videoReady()"></share-button>
+        <share-button type="twitter" storyid="{{story.storyId}}" storyname="{{story.name}}" active="videoReady()"></share-button>
+        <share-button type="facebook" storyid="{{story.storyId}}" storyname="{{story.name}}" active="videoReady()"></share-button>
     </div>
 </div>
-
-<!-- <share-button storyid={{searchId}} storyname={{data.name}}></share-button> -->
 

@@ -27,13 +27,13 @@ button:focus {outline:0 !important;}
 	-ms-transition: all linear 100ms;
 	-o-transition: all linear 100ms;
 }
-.zoom-hover{
+.zoom-hover, .zoomHover{
 	transition: all linear 100ms;
 	-webkit-transition: all linear 100ms;
 	-ms-transition: all linear 100ms;
 	-o-transition: all linear 100ms;
 }
-.zoom-hover:hover{
+.zoom-hover:hover, .zoomHover:hover{
 	transform: scale(1.1);
 	-webkit-transform: scale(1.1);
 	-ms-transform: scale(1.1);

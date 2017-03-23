@@ -33,7 +33,6 @@
 	<script type="text/javascript" src="controllers/AceQueryController.js"></script>
 	<script type="text/javascript" src="controllers/AceResultsController.js"></script>
 	<script type="text/javascript" src="controllers/facebookShareController.js"></script>
-	<script type="text/javascript" src="controllers/shareButtonsController.js"></script>
 	<script type="text/javascript" src="controllers/SideBarController.js"></script>
 	<script type="text/javascript" src="controllers/assetsController.js"></script>
 	<script type="text/javascript" src="controllers/scriptController.js"></script>
@@ -43,6 +42,7 @@
 	
 	<script type="text/javascript" src="directives/buttonWithCheck.js"></script>
 	<link href='directives/css/buttonWithCheck.css' rel='stylesheet' type='text/css'>
+	<script type="text/javascript" src="directives/shareButton.js"></script>
 	
 	<script type="text/javascript" src="js/components.js"></script>
 	
@@ -51,7 +51,6 @@
 	<script type="text/javascript" src="js/editor/ZSPlayer.js"></script>	
 
 	<link href='css/main.css' rel='stylesheet' type='text/css'>
-	<link href='css/shareButtons.css' rel='stylesheet' type='text/css'>
 	<link href='css/facebookShare.css' rel='stylesheet' type='text/css'>
 	<link href='css/sideBar.css' rel='stylesheet' type='text/css'>
 	<link href='css/input.css' rel='stylesheet' type='text/css'>
