@@ -1,0 +1,27 @@
+add-asset{
+	position:fixed !important;
+	top:0;
+	left:0;
+	background-color:rgba(70,70,70,0.8);
+}
+add-asset .content{
+	position:relative;
+	margin:auto;
+	width:95%;
+	max-width:800px;
+	margin-top:15%;
+}
+add-asset p{
+	color: white;
+	font-weight:300;
+	font-size:1.5em;
+	padding:0px;
+	margin:0px auto;
+}
+add-asset input{
+	width:100%;
+	position:relative;
+}
+add-asset .input-container{
+	margin:20px auto;
+}

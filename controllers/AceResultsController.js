@@ -1,5 +1,5 @@
 // results controller
-ACE.controller('AceResultsController', function($scope, $http, $timeout, $routeParams, $location) {
+function AceResultsController($scope, $http, $timeout, $routeParams, $rootScope, $window) {
 
 	var ctrl = this;
 
@@ -8,21 +8,100 @@ ACE.controller('AceResultsController', function($scope, $http, $timeout, $routeP
 	$scope.aceReady = false;
 	$scope.searchStatus = 0;
 	$scope.data = {'name':'', storyId:$scope.searchId};
-	$scope.edited = false;
 	
-	$scope.videoData = {'status':0};
+	
 	$scope.videoBtnText = "Render Video";
 
 	$scope.bodymovin = null;
 
 	// TABLOIDSS HEHEHEHEHAHHA
 	$scope.tab = 1;
+
+    // EVENTS
+    $scope.$on('updateAssets', function (event, assets) {
+        $scope.data.assets = assets;
+        saveEdits();
+        propagateEdits();
+    });
+
+    $scope.$on('updateScript', function (event, script) {
+        $scope.data.script = script;
+        saveEdits();
+        propagateEdits();
+    });
+
+    function propagateEdits(){
+        prepareStory();
+        $scope.$broadcast('storyDataChanged', $scope.data); // going down!
+    }
+
+    // save edits in database
+    function saveEdits(){
+        var postdata = $.param({ data: $scope.data, searchId: $scope.searchId });
+        var config = {
+            headers : {
+                'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+            }
+        }
+
+        $http.post(API_BASE+"ace/updateStory", postdata, config)
+            .success(function (data, status, headers, config) {
+            })
+            .error(function (data, status, header, config) {
+                $scope.ResponseDetails = "Data: " + data +
+                    "<hr />status: " + status +
+                    "<hr />headers: " + header +
+                    "<hr />config: " + config;
+                $window.alert('We are experiencing errors. Please try again later.');
+            });
+    }
+
+    function prepareStory(){
+        var body = [];
+        
+        for(var i=0; i<$scope.data.script.length; i++){
+            if(i >= $scope.data.assets.length){continue;}
+
+            var textAsset = $scope.data.script[i];
+            var mediaAsset = $scope.data.assets[i];
+            var imageUrl = "https://img.youtube.com/vi/"+mediaAsset.videoId+"/maxresdefault.jpg";
+            var asset = {
+                "id" : mediaAsset.videoId,
+                "type" : "image", // "video", // use youtube poste images for now
+                "text" : textAsset.text,
+                "username" : "",
+                "source" : "youtube",
+                "images" : {
+                    "thumbnail":{"width":480,"height":360, "url":imageUrl},
+                    "low_resolution":{"width":480,"height":360, "url":imageUrl},
+                    "standard_resolution":{"width":480,"height":360, "url":imageUrl}
+                    },
+                "videos" : {
+                    "thumbnail":{"width":150,"height":150, "url":""},
+                    "low_resolution":{"width":150,"height":150, "url":""},
+                    "standard_resolution":{"width":150,"height":150, "url":""}
+                    },
+                "link" : mediaAsset.source
+
+            };
+            
+
+            body.push(asset);
+        }
+
+        $scope.data.body = body;
+    }
     
     $scope.setTab = function(newTab){
-      $scope.tab = newTab;
-      if(newTab == 4){
-      	initPlayer();
-      }
+        $scope.tab = newTab;
+
+        if(newTab == 2){
+            $timeout(function(){
+                $("textarea").each( function( index, element ){
+                    $(this).height(this.scrollHeight );
+                });
+            },0);
+        }
     };
     
     $scope.isSet = function(tabNum){
@@ -41,39 +120,12 @@ ACE.controller('AceResultsController', function($scope, $http, $timeout, $routeP
     	console.log($scope.data);
     }
 
-    // edit script
-    $scope.didEdit = function(){
-    	$scope.edited = true;
-    }
-
-    // save script edits
-    $scope.saveEdits = function(){
-    	$scope.edited = false;
-
-    	var postdata = $.param({ data: $scope.data, searchId: $scope.searchId });
-		var config = {
-            headers : {
-                'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
-            }
-        }
-
-    	$http.post(API_BASE+"ace/updateStory", postdata, config)
-	    	.success(function (data, status, headers, config) {
-	        })
-	        .error(function (data, status, header, config) {
-	            $scope.ResponseDetails = "Data: " + data +
-	                "<hr />status: " + status +
-	                "<hr />headers: " + header +
-	                "<hr />config: " + config;
-	            $window.alert('We are experiencing errors. Please try again later.');
-	        });
-    }
-
     // Check for ACE results
     function pollResults(){
         // alert("search " + $scope.searchText);
 
-        $http.get(API_BASE+"ace/searchResults?searchId="+$scope.searchId)
+        // $http.get(API_BASE+"ace/searchResults?searchId="+$scope.searchId)
+        $http.get(API_BASE+"story/"+$scope.searchId)
             .then(function(response){ 
             	// console.log(response);
 
@@ -84,10 +136,14 @@ ACE.controller('AceResultsController', function($scope, $http, $timeout, $routeP
 	                if($scope.searchStatus == 1){
 	                	$scope.aceReady = true;
 
-	                	$scope.data = response.data;
+	                	$scope.data = response; //.data;
 	                	$scope.originalData = response.data;
+	                	// $rootScope.story = response.data;
 
-	                	$("textarea").height( $("textarea")[0].scrollHeight );
+                        prepareStory();
+                        $scope.$broadcast('storyData', $scope.data); // going down!
+
+	                	// $("textarea").height( $("textarea")[0].scrollHeight );
 	                }
 	                // try again in 3 secs
 	                else if($scope.searchStatus == 0){
@@ -107,77 +163,6 @@ ACE.controller('AceResultsController', function($scope, $http, $timeout, $routeP
 
     ctrl.$onInit = function() {
         pollResults();
-        pollVideoStatus();
     }; 
 
-    // check for video resluts
-
-    $scope.startRender = function(){
-    	// push story to render queue
-
-    	var postdata = $.param({ storyId: $scope.searchId });
-		var config = {
-            headers : {
-                'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
-            }
-        }
-    	
-    	$http.post(API_BASE+"zerobot/video/render", postdata, config)
-	    	.success(function (data, status, headers, config) {
-	            pollVideoStatus();
-	        })
-	        .error(function (data, status, header, config) {
-	            $scope.ResponseDetails = "Data: " + data +
-	                "<hr />status: " + status +
-	                "<hr />headers: " + header +
-	                "<hr />config: " + config;
-	            $window.alert('We are experiencing errors. Please try again later.');
-	        });
-    }
-
-    $scope.videoReady = function(){
-    	return $scope.videoData.status==2;
-    }
-
-    function pollVideoStatus(){
-    	$http.get(API_BASE+"zerobot/video/status?storyId=" + $scope.searchId)
-    		.then(function(response){ 
-    			$scope.videoData = response.data;
-            	if($scope.videoData.status == 1 || $scope.videoData.status == 0 ){
-            		$scope.videoBtnText = $scope.videoData.status==1 ? "...rendering..." : "...in queue...";
-            		$timeout(function(){
-				            pollVideoStatus();
-				    },5000);
-            	}
-            });
-    }
-
-
-    // JS PLayer
-    function initPlayer(){
-    	if(!$scope.bodymovin){
-    		CONFIG = {
-    			'api_url' : 'http://zeroslant.com/api/v0.2/',
-    			'storyId': $scope.searchId,
-    			'platform': 'browser',
-    			'renderer': 'svg',
-    			'language':'en'
-    		}
-    		$scope.bodymovin = new VideoConstructor(CONFIG);
-    		advance($scope.bodymovin);
-    	}else{
-    		$scope.bodymovin
-    	}
-
-    }
-
-    function advance(constructor){
-        var keepgoing = constructor.goToNextFrame();
-        if(keepgoing){
-            setTimeout(function(){
-                advance(constructor);
-            },50);
-        }
-    }
-
-});
+}

@@ -1,0 +1,5 @@
+<div ng-repeat="v in assets" class='asset'>
+	<iframe ng-src="{{v.embed | trustUrl}}" frameborder='0' allowfullscreen></iframe>
+	<img class='delete clickable zoom-hover' ng-click="deleteAsset($index)" ng-src='img/assets/deleteAsset.png'/>
+</div>
+<img class='add clickable zoom-hover' ng-click="addAsset()" ng-src='img/assets/addAsset.png'/>

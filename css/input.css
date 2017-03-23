@@ -18,6 +18,16 @@
     margin: auto;
     cursor:pointer;
 }
+.input-container .submit{
+	position: absolute;
+    top: 0px;
+    right: 1em;
+    height: 80%;
+    width: auto;
+    bottom: 0px;
+    margin: auto;
+    cursor:pointer;
+}
 
 .suggestions{
 	width:100%;

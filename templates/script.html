@@ -1,0 +1,7 @@
+<div class='text-field script'>
+    <textarea type="text" ng-repeat="t in script" ng-model='t.text' ng-keyup='didEdit()'>{{t.text}}</textarea>
+</div>
+<div ng-click='saveEdits()' class='clickable fade ng-hide-animate save' ng-show='edited'>
+    <span>Save</span>
+    <img ng-src='img/checkmark.png' /> 
+</div>

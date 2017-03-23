@@ -1,0 +1,9 @@
+<add-asset class='el full-screen' ng-click="close(null)">
+    <div class='content'>
+        <p>Paste Link to Video or Image</p>
+        <div class='input-container' ng-click="stopPropagation($event)">
+            <input type='text' ng-model='link' placeholder='(only youtbe links allowed for now)' class='text-field' ng-keyup="handleKeyUp($event)"/>
+            <img class='submit fade ng-hide-animate' ng-click="close(link)" ng-src='img/checkmark.png' ng-show="link.length"/>
+        </div>
+    </div>
+</add-asset>

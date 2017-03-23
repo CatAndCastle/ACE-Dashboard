@@ -35,6 +35,14 @@
 	<script type="text/javascript" src="controllers/facebookShareController.js"></script>
 	<script type="text/javascript" src="controllers/shareButtonsController.js"></script>
 	<script type="text/javascript" src="controllers/SideBarController.js"></script>
+	<script type="text/javascript" src="controllers/assetsController.js"></script>
+	<script type="text/javascript" src="controllers/scriptController.js"></script>
+	<script type="text/javascript" src="controllers/addAssetController.js"></script>
+	<script type="text/javascript" src="controllers/videoController.js"></script>
+	<script type="text/javascript" src="controllers/playerControlsController.js"></script>
+	
+	<script type="text/javascript" src="directives/buttonWithCheck.js"></script>
+	<link href='directives/css/buttonWithCheck.css' rel='stylesheet' type='text/css'>
 	
 	<script type="text/javascript" src="js/components.js"></script>
 	
@@ -48,6 +56,11 @@
 	<link href='css/sideBar.css' rel='stylesheet' type='text/css'>
 	<link href='css/input.css' rel='stylesheet' type='text/css'>
 	<link href='css/dashboard.css' rel='stylesheet' type='text/css'>
+	<link href='css/script.css' rel='stylesheet' type='text/css'>
+	<link href='css/assets.css' rel='stylesheet' type='text/css'>
+	<link href='css/addAsset.css' rel='stylesheet' type='text/css'>
+	<link href='css/video.css' rel='stylesheet' type='text/css'>
+	<link href='css/playerControls.css' rel='stylesheet' type='text/css'>
 
 	<link href='font/Roboto/Roboto.css' rel='stylesheet' type='text/css'>
 	<link href='font/AvenirNext/AvenirNext.css' rel='stylesheet' type='text/css'>

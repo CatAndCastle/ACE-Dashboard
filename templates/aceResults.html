@@ -1,4 +1,4 @@
-<div ng-controller="AceResultsController as ctrl" class='full-screen'> 
+<div class='full-screen'> 
 
     <loader ng-hide="aceReady" class='fade ng-hide-animate'></loader>
 
@@ -7,16 +7,16 @@
 
         <ul class="manager-tabs">
             <li ng-class="{ active: isSet(1) }" ng-click="setTab(1)">
+                <img src='img/tabs/video.png'/>
+                <div class='tab-name'>Video</div>
+            </li>
+            <li ng-class="{ active: isSet(2) }" ng-click="setTab(2)">
                 <img src='img/tabs/scripts.png'/>
                 <div class='tab-name'>Script</div>
             </li>
-            <li ng-class="{ active: isSet(2) }" ng-click="setTab(2)">
+            <li ng-class="{ active: isSet(3) }" ng-click="setTab(3)">
                 <img src='img/tabs/assets.png'/>
                 <div class='tab-name'>Assets</div>
-            </li>
-            <li ng-class="{ active: isSet(3) }" ng-click="setTab(3)">
-                <img src='img/tabs/video.png'/>
-                <div class='tab-name'>Video</div>
             </li>
             <li ng-class="{ active: isSet(4) }" ng-click="setTab(4)">
                 <img src='img/tabs/editor.png'/>
@@ -26,37 +26,10 @@
 
         <spacer></spacer>
 
-        <div class='script' ng-show="isSet(1)">
-            <div class='text-field script'>
-                <textarea type="text" ng-repeat="t in data.script" ng-model='t.text' ng-keyup='didEdit()'>{{t.text}}</textarea>
-            </div>
-            <div ng-click='saveEdits()' class='clickable fade ng-hide-animate save' ng-show='edited'>
-                <span>Save</span>
-                <img ng-src='img/checkmark.png' /> 
-            </div>
-
-        </div>
-        
-
-        <div class='assets' ng-show="isSet(2)">
-            <div ng-repeat="v in data.assets" class='asset'>
-                <iframe width='180' height='180' ng-src="{{v.embed | trustUrl}}" frameborder='0' allowfullscreen></iframe>
-            </div>
-        </div>
-
-        <div class='video' ng-show="isSet(3)">
-            <div ng-hide="videoReady()" class='start-render' ng-click="startRender()">{{videoBtnText}}</div>
-
-            <video ng-show="videoReady()" poster="{{videoData.poster | trustUrl}}" controls="" ng-src="{{videoData.url | trustUrl}}"></video>
-
-            <share-button storyid={{searchId}} storyname={{data.name}}></share-button>
-
-        </div>
-
-        <div class='editor' ng-show="isSet(4)">
-            <div id="bodymovin"></div>
-            <spacer></spacer>
-        </div>
+        <ace-video class='el' ng-show="isSet(1)"></ace-video>
+        <ace-script class='el script' ng-show="isSet(2)"></ace-script> 
+        <assets class='el' ng-show="isSet(3)"></assets>
+        <div class='editor' ng-show="isSet(4)">COMING SOON</div>
 
 
     </div>

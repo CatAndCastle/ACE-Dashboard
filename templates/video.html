@@ -1,0 +1,27 @@
+<div class='vid-container'>
+    <div class='resizer'></div>
+    <div class='player'>
+        <div ng-show="isSet('preview')">
+            <div id="bodymovin"></div>
+            <player-controls class='el'></player-controls>
+            <spacer></spacer>
+        </div>
+
+        <div ng-show="isSet('mp4')">
+            <video ng-show="videoReady()" poster="{{videoData.poster | trustUrl}}" controls="" ng-src="{{videoData.url | trustUrl}}"></video>
+            
+        </div>
+    </div>
+</div>
+
+<div class='controls'>
+    <button-with-check ng-click="renderMp4()">Render</button-with-check>
+
+    <div class='toggle'>
+        <span class='clickable tab' ng-click="toggleView('preview')">Preview</span>
+        <span class='tab clickable' ng-class="{ rendered: videoReady() }" ng-click="toggleView('mp4')">Mp4</span>
+    </div>
+</div>
+
+<!-- <share-button storyid={{searchId}} storyname={{data.name}}></share-button> -->
+

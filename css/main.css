@@ -27,6 +27,17 @@ button:focus {outline:0 !important;}
 	-ms-transition: all linear 100ms;
 	-o-transition: all linear 100ms;
 }
+.zoom-hover{
+	transition: all linear 100ms;
+	-webkit-transition: all linear 100ms;
+	-ms-transition: all linear 100ms;
+	-o-transition: all linear 100ms;
+}
+.zoom-hover:hover{
+	transform: scale(1.1);
+	-webkit-transform: scale(1.1);
+	-ms-transform: scale(1.1);
+}
 
 .full-screen{
 	position:relative;
@@ -37,7 +48,10 @@ button:focus {outline:0 !important;}
 .clickable{
 	cursor:pointer;
 }
-
+.el{
+	position:relative;
+	display:block;
+}
 loader{
 	display:block;
 	width: 100%;
@@ -47,7 +61,7 @@ loader{
 }
 spacer{
 	display: block;
-    height: 2em;
+    height: 1em;
 }
 dashboard{
 	position:relative;
@@ -104,53 +118,4 @@ a{
 	color:grey;
 	text-decoration:none;
 	cursor:pointer;
-}
-
-.video{
-	position:relative;
-	width:100%;
-	max-width:960px;
-	margin:auto;
-}
-.video share-button{
-	position:relative;
-	border:0px;
-	float:right;
-	margin:20px 0px;
-}
-.video share-button button{
-	border:0px;
-}
-
-.video video{
-	position:relative;
-	width:100%;
-	max-width:960px;
-	margin:auto;
-	height:auto;
-	display:block;
-}
-.video .start-render{
-	padding:2em;
-	border: 1px solid black;
-	cursor:pointer;
-	position:relative;
-	margin:10% auto;
-	text-align:center;
-	width:300px;
-}
-.video .start-render:hover{
-	color:black;
-	background-color:#c3c0c0;
-}
-
-.editor #bodymovin{
-    background-color:#000000;
-    width:960px;
-    height:540px;
-    display:block;
-    overflow: hidden;
-    transform: translate3d(0,0,0);
-    margin: auto;
-    opacity: 1;
 }

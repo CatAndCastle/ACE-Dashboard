@@ -8,8 +8,7 @@ ACE.config(function($routeProvider, $locationProvider) {
             controller: 'AceQueryController'
         }).
         when('/search/:searchId', {
-            templateUrl: 'templates/aceResults.html',
-            controller: 'AceResultsController'
+            template: "<ace-dashboard class='el full-screen'></ace-dashboard>"
         }).
         when('/video', {
             template: 'VIDEO CONTROLLER',
