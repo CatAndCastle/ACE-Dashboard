@@ -1,7 +1,8 @@
 <div class='text-field script'>
-    <textarea type="text" ng-repeat="t in script" ng-model='t.text' ng-keyup='didEdit()'>{{t.text}}</textarea>
+    <div ng-repeat="t in script" class='line'>
+        <textarea type="text" ng-model='t.text' ng-keyup='didEdit()'>{{t.text}}</textarea>
+        <img class='delete clickable zoom-hover' ng-click="deleteLine($index)" ng-src='img/assets/deleteAsset.png'/>
+    </div>
+    <img class='add clickable zoom-hover' ng-click="addLine()" ng-src='img/assets/addAsset.png'/>
 </div>
-<div ng-click='saveEdits()' class='clickable fade ng-hide-animate save' ng-show='edited'>
-    <span>Save</span>
-    <img ng-src='img/checkmark.png' /> 
-</div>
+<button-with-check ng-click="saveEdits()" class='clickable fade ng-hide-animate save' ng-show='edited'>Save</button-with-check>

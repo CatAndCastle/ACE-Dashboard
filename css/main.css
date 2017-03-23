@@ -88,23 +88,6 @@ dashboard h1{
 	/*min-width:500px;*/
 }
 
-.text-field.script{
-	border-radius:1em;
-}
-.script textarea{
-	resize:none;
-	position:relative;
-	display:block;
-	font-size:1em;
-	border:0px;
-	width:100%;
-	margin:1em auto;
-	color:grey;
-}
-.script textarea:hover{
-	color:black;
-}
-
 .asset{
 	position:relative;
 	float:left;

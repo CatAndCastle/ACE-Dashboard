@@ -17,4 +17,28 @@ function ScriptController($scope, $window, $rootScope, $http, $timeout){
     	$scope.$emit('updateScript', $scope.script);
     	$scope.edited = false;
     }
+
+    //delete line
+    $scope.deleteLine = function(idx){
+        console.log("delete "  + idx);
+        if ( window.confirm("delete asset?") ) {
+            $scope.script.splice(idx,1);
+            $scope.edited = true;
+            // recordChanges();
+        }
+    }
+
+    //add line
+    $scope.addLine = function(){
+        $scope.script.push({
+            'source':'http://www.source.com',
+            'text': 'Enter text'
+        });
+        $scope.edited = true;
+    }
+
+    function recordChanges(){
+        $scope.$emit('updateScript', $scope.script);
+        $scope.edited = false;
+    }
 }
