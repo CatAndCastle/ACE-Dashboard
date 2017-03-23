@@ -1,22 +1,28 @@
-.text-field.script{
+ace-script .text-field{
     border-radius:1em;
 }
-.script textarea{
-    resize:none;
-    position:relative;
-    display:block;
-    font-size:1em;
-    border:0px;
-    width:100%;
-    margin:1em auto;
-    color:grey;
-}
-.script textarea:hover{
+ace-script textarea:hover{
     color:black;
 }
 
+ace-script .line .idx{
+    display:inline;
+    font-weight:300;
+}
 ace-script .line{
     position:relative;
+    margin:1em auto;
+}
+ace-script .line textarea{
+    resize:none;
+    position:relative;
+    display:block;
+    font-size:1.1em;
+    border:0px;
+    width:100%;
+    color:black;
+    font-weight:300;
+    font-family: inherit;
 }
 ace-script .line img.delete{
     position:absolute;
@@ -35,4 +41,15 @@ ace-script .add{
     right:0px;
     height:3em;
     margin:1em;
+}
+
+ace-script .line .info .source{
+    color: #f51ca8;
+    border: 0px;
+    width: 200px;
+    font-size: 1em;
+    font-family: inherit;
+}
+ace-script .line .info .source:hover{
+    color:black;
 }

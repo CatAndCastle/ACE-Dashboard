@@ -31,7 +31,7 @@ function ScriptController($scope, $window, $rootScope, $http, $timeout){
     //add line
     $scope.addLine = function(){
         $scope.script.push({
-            'source':'http://www.source.com',
+            'source':'Enter source',
             'text': 'Enter text'
         });
         $scope.edited = true;

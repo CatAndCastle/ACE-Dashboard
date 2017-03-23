@@ -2,6 +2,9 @@
     <div ng-repeat="t in script" class='line'>
         <textarea type="text" ng-model='t.text' ng-keyup='didEdit()'>{{t.text}}</textarea>
         <img class='delete clickable zoom-hover' ng-click="deleteLine($index)" ng-src='img/assets/deleteAsset.png'/>
+        <div class='info'>
+            <input class='source' type='text' ng-model='t.source' placeholder='source' />
+        </div>
     </div>
     <img class='add clickable zoom-hover' ng-click="addLine()" ng-src='img/assets/addAsset.png'/>
 </div>
