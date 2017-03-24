@@ -5,7 +5,7 @@ ace-video .vid-container{
 }
 ace-video .vid-container .resizer{
 	position:relative;
-	padding-top:56%;
+	padding-top:56.25%;
 }
 ace-video .vid-container .player{
 	position:absolute;
@@ -43,7 +43,7 @@ ace-video .start-render:hover{
 }
 
 ace-video #bodymovin{
-    background-color:#000000;
+    background-color:#e4e4e4;
     width:100%;
     height:100%;
     display:block;
