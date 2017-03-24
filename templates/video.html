@@ -15,13 +15,14 @@
     </div>
 </div>
 
-<div class='controls'>
-    <button-with-check ng-click="renderMp4()">Render</button-with-check>
+<div class='controls' ng-show='showControls'>
 
     <div class='toggle'>
         <span class='clickable tab' ng-class="{ selected: isSet('preview') }" ng-click="toggleView('preview')">Preview</span>
         <span class='tab clickable' ng-class="{ selected: isSet('mp4'), rendered: videoReady() }" ng-click="toggleView('mp4')">MP4</span>
     </div>
+
+    <button-with-check ng-click="renderMp4()">Render</button-with-check>
 
     <div class='actions'>
         <img class="clickable zoom-hover action" src="img/video/analyticsIcon.png" ng-click="goAnalytics()"/>

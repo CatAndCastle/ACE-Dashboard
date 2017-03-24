@@ -2,7 +2,8 @@ function videoController($scope, $window, $rootScope, $http, $timeout){
 	
 	$scope.tab = 'preview';
 	$scope.playing = false;
-	$scope.rendering = false;
+    $scope.rendering = false;
+	$scope.showControls = false; // show controls after we fetch mp4 status info
 	$scope.videoData = {'status':0};
 
 	$scope.$on('storyData', function (event, data) {
@@ -87,11 +88,11 @@ function videoController($scope, $window, $rootScope, $http, $timeout){
 		Video Render Functions
     */
     $scope.renderMp4 = function(){
+
     	if($scope.rendering){
     		$window.alert("your video will be ready in a few minutes");
     		return;
     	}
-    	// push story to render queue
 
     	var postdata = $.param({ storyId: $scope.story.storyId });
 		var config = {
@@ -104,9 +105,11 @@ function videoController($scope, $window, $rootScope, $http, $timeout){
 	    	.success(function (data, status, headers, config) {
 	    		$scope.rendering = true;
 	    		$window.alert("your video is rendering");
+                // $scope.showRenderBtn = true; // button fades back in
 	            pollVideoStatus();
 	        })
 	        .error(function (data, status, header, config) {
+                // $scope.showRenderBtn = true; // button fades back in
 	            $scope.ResponseDetails = "Data: " + data +
 	                "<hr />status: " + status +
 	                "<hr />headers: " + header +
@@ -124,17 +127,20 @@ function videoController($scope, $window, $rootScope, $http, $timeout){
     		.then(function(response){ 
     			$scope.videoData = response.data;
             	if($scope.videoData.status == 1 || $scope.videoData.status == 0 ){
+                    $scope.rendering = true;
             		$scope.videoBtnText = $scope.videoData.status==1 ? "...rendering..." : "...in queue...";
             		$timeout(function(){
 				            pollVideoStatus();
 				    },5000);
             	}
-            	else if ($scope.videoData.status == 2){
+            	else if ($scope.videoData.status == 2 || $scope.videoData.status == -1){
             		$scope.rendering = false;
             	}
             	else if($scope.videoData.status == 3){
+                    $scope.rendering = false;
             		$window.alert("there was an error rendeiring this video");
             	}
+                $scope.showControls = true;
             });
     }
 

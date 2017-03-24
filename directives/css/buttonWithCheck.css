@@ -8,6 +8,21 @@ button-with-check{
     float: right;
     margin: 1em 0em;
     cursor:pointer;
+
+    transition: all linear 500ms;
+    -webkit-transition: all linear 500ms;
+    -ms-transition: all linear 500ms;
+    -o-transition: all linear 500ms;
+}
+button-with-check.active{
+    transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+
+    transition: all linear 0ms;
+    -webkit-transition: all linear 0ms;
+    -ms-transition: all linear 0ms;
+    -o-transition: all linear 0ms;
 }
 button-with-check span{
     padding: 0.5em 0.2em 0.5em 0.5em;
