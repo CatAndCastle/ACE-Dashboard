@@ -43,13 +43,24 @@ ace-script .add{
     margin:1em;
 }
 
+ace-script .line .info{
+    height:1.5em;
+}
 ace-script .line .info .source{
     color: #f51ca8;
     border: 0px;
-    width: 200px;
+    width: 230px;
     font-size: 1em;
+    font-weight:300;
     font-family: inherit;
+    height:2em;
+    float:left;
+    margin-top:0.25em;
 }
 ace-script .line .info .source:hover{
     color:black;
+}
+ace-script .line .info share-button{
+    height:100%;
+    margin:0px 2px;
 }

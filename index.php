@@ -43,6 +43,7 @@
 	<script type="text/javascript" src="directives/buttonWithCheck.js"></script>
 	<link href='directives/css/buttonWithCheck.css' rel='stylesheet' type='text/css'>
 	<script type="text/javascript" src="directives/shareButton.js"></script>
+	<link href='directives/css/shareButton.css' rel='stylesheet' type='text/css'>
 	
 	<script type="text/javascript" src="js/components.js"></script>
 	

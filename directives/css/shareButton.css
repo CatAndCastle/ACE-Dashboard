@@ -1,0 +1,14 @@
+share-button{
+	display:inline-block;
+	position:relative;
+}
+share-button img{
+	height:100%;
+	object-fit:contain;
+}
+share-button img{
+	opacity:0.5;
+}
+share-button img.active{
+	opacity:1;
+}

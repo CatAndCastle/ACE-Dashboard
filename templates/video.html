@@ -24,11 +24,11 @@
     </div>
 
     <div class='actions'>
-        <img class="clickable zoom-hover" src="img/video/analyticsIcon.png" ng-click="goAnalytics()"/>
-        <share-button type="download" storyid="{{story.storyId}}" storyname="{{story.name}}" active="videoReady()"></share-button>
-        <share-button type="email" storyid="{{story.storyId}}" storyname="{{story.name}}" active="videoReady()"></share-button>
-        <share-button type="twitter" storyid="{{story.storyId}}" storyname="{{story.name}}" active="videoReady()"></share-button>
-        <share-button type="facebook" storyid="{{story.storyId}}" storyname="{{story.name}}" active="videoReady()"></share-button>
+        <img class="clickable zoom-hover action" src="img/video/analyticsIcon.png" ng-click="goAnalytics()"/>
+        <share-button platform="download" storyid="{{story.storyId}}" storyname="{{story.name}}" active="videoReady()"  sharetype="video"></share-button>
+        <share-button platform="email" storyid="{{story.storyId}}" storyname="{{story.name}}" active="videoReady()" sharetype="video"></share-button>
+        <share-button platform="twitter" storyid="{{story.storyId}}" storyname="{{story.name}}" active="videoReady()" sharetype="video"></share-button>
+        <share-button platform="facebook" storyid="{{story.storyId}}" storyname="{{story.name}}" active="videoReady()" sharetype="video"></share-button>
     </div>
 </div>
 

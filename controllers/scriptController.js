@@ -5,6 +5,7 @@ function ScriptController($scope, $window, $rootScope, $http, $timeout){
 	$scope.$on('storyData', function (event, data) {
 		$scope.script = data.script;
 		$scope.searchId = data.storyId;
+        $scope.story = data;
 	});
 
 	// edit script
@@ -14,6 +15,14 @@ function ScriptController($scope, $window, $rootScope, $http, $timeout){
 
     // save script edits
     $scope.saveEdits = function(){
+        // extract source for new sentences
+        for(var i=0; i<$scope.script.length; i++){
+            if($scope.script[i].new){
+                delete $scope.script[i]["new"];
+                $scope.script[i]['source'] = extractDomain($scope.script[i]['url']);
+            }
+        }
+
     	$scope.$emit('updateScript', $scope.script);
     	$scope.edited = false;
     }
@@ -31,11 +40,35 @@ function ScriptController($scope, $window, $rootScope, $http, $timeout){
     //add line
     $scope.addLine = function(){
         $scope.script.push({
-            'source':'Enter source',
-            'text': 'Enter text'
+            'source':'',
+            'url': '',
+            'text': 'Enter text',
+            'new': true
         });
         $scope.edited = true;
     }
+
+    function extractDomain(url) {
+        if(url.length < 1){return url;}
+        var domain;
+        //find & remove protocol (http, ftp, etc.) and get domain
+        if (url.indexOf("://") > -1) {
+            domain = url.split('/')[2];
+        }
+        else {
+            domain = url.split('/')[0];
+        }
+
+        //find & remove port number
+        domain = domain.split(':')[0];
+        //find & remove www
+        if (url.indexOf("www.") > -1) {
+            domain = domain.split('www.')[1];
+        }
+
+        return domain;
+    }
+
 
     function recordChanges(){
         $scope.$emit('updateScript', $scope.script);

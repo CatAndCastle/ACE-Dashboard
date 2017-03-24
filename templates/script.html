@@ -3,7 +3,11 @@
         <textarea type="text" ng-model='t.text' ng-keyup='didEdit()'>{{t.text}}</textarea>
         <img class='delete clickable zoom-hover' ng-click="deleteLine($index)" ng-src='img/assets/deleteAsset.png'/>
         <div class='info'>
-            <input class='source' type='text' ng-model='t.source' placeholder='source' />
+            <a ng-hide="t.new" class='source' href="{{t.url}}" target="blank">{{t.source}}</a>
+            <input ng-show="t.new" class='source' type='text' ng-model='t.url' placeholder='enter source' />
+            
+            <share-button platform="facebook" storyid="{{story.storyId}}" storyname="{{story.name}}" active="t.url.length" sharetype="link" sharelink="{{t.url}}"></share-button>
+            <share-button platform="twitter" storyid="{{story.storyId}}" storyname="{{story.name}}" active="t.url.length" sharetype="link" sharelink="{{t.url}}"></share-button>
         </div>
     </div>
     <img class='add clickable zoom-hover' ng-click="addLine()" ng-src='img/assets/addAsset.png'/>
